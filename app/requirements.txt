@@ -1,0 +1,18 @@
+# Local Ollama client -- chat, embeddings, no cloud API calls anywhere in this project.
+ollama>=0.6.0
+
+# RAGAS evaluation library.
+ragas>=0.4.0
+
+# Pinned below 0.4: a bare `pip install ragas` otherwise resolves the newest
+# langchain-community release, which has dropped an internal module RAGAS's
+# own code still imports directly (langchain_community.chat_models.vertexai).
+# That import fails with ModuleNotFoundError the moment RAGAS is used, even
+# though pip reported the install as successful. Staying below 0.4 keeps
+# that module available. See app/../README.md and the course's own Setup
+# lesson for the full story.
+langchain-community<0.4
+
+# Wires RAGAS's evaluator LLM/embeddings to a local Ollama server instead
+# of a hosted API.
+langchain-ollama>=1.0.0

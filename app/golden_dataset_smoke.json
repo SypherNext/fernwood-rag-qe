@@ -1,0 +1,8 @@
+{
+  "dataset_version": "1.0.0",
+  "cases": [
+    { "id": "gd-001", "category": "positive", "question": "How many active projects can I have on the Free plan?", "reference_answer": "Up to 3 active projects.", "source_doc": "projects-and-tasks.md" },
+    { "id": "gd-003", "category": "negative", "question": "Can a Viewer edit tasks in a project?", "reference_answer": "No. Viewers have read-only access; only Owners and Editors can edit tasks.", "source_doc": "sharing-and-permissions.md" },
+    { "id": "gd-009", "category": "unanswerable", "question": "Does Fernwood support Gantt charts?", "reference_answer": "Not documented.", "source_doc": null }
+  ]
+}

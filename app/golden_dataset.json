@@ -1,0 +1,89 @@
+{
+  "dataset_version": "1.0.0",
+  "cases": [
+    {
+      "id": "gd-001",
+      "category": "positive",
+      "question": "How many active projects can I have on the Free plan?",
+      "reference_answer": "Up to 3 active projects.",
+      "source_doc": "projects-and-tasks.md"
+    },
+    {
+      "id": "gd-002",
+      "category": "positive",
+      "question": "What are the three permission roles in Fernwood?",
+      "reference_answer": "Owner, Editor, and Viewer.",
+      "source_doc": "sharing-and-permissions.md"
+    },
+    {
+      "id": "gd-003",
+      "category": "negative",
+      "question": "Can a Viewer edit tasks in a project?",
+      "reference_answer": "No. Viewers have read-only access; only Owners and Editors can edit tasks.",
+      "source_doc": "sharing-and-permissions.md"
+    },
+    {
+      "id": "gd-004",
+      "category": "negative",
+      "question": "Does the Free plan include priority support?",
+      "reference_answer": "No. Priority support is only included on the Team plan.",
+      "source_doc": "billing-and-plans.md"
+    },
+    {
+      "id": "gd-005",
+      "category": "edge",
+      "question": "What happens to my data immediately after I delete my account?",
+      "reference_answer": "It is not deleted immediately. There is a 30-day grace period during which the data can still be recovered by contacting support.",
+      "source_doc": "data-export-and-deletion.md"
+    },
+    {
+      "id": "gd-006",
+      "category": "edge",
+      "question": "I have exactly 5 teammates on my project. Can I still use the Free plan?",
+      "reference_answer": "Yes. The Free plan supports up to 5 teammates, so exactly 5 is within the limit.",
+      "source_doc": "billing-and-plans.md"
+    },
+    {
+      "id": "gd-007",
+      "category": "ambiguous",
+      "question": "How do I get more projects?",
+      "reference_answer": "This is ambiguous: it could mean raising your project limit or freeing up existing slots. The documented answer covers only the first reading: upgrade to the Pro or Team plan, both of which allow unlimited projects.",
+      "source_doc": "billing-and-plans.md"
+    },
+    {
+      "id": "gd-008",
+      "category": "ambiguous",
+      "question": "How do I remove someone from a project?",
+      "reference_answer": "This is ambiguous between removing a teammate's project access and unassigning them from a task. Only the first reading is documented: access is managed from Project Settings → Members.",
+      "source_doc": "sharing-and-permissions.md"
+    },
+    {
+      "id": "gd-009",
+      "category": "unanswerable",
+      "question": "Does Fernwood support Gantt charts?",
+      "reference_answer": "Not documented. The docs describe tasks with due dates, assignees, and status, but make no mention of Gantt charts or timeline views.",
+      "source_doc": null
+    },
+    {
+      "id": "gd-010",
+      "category": "unanswerable",
+      "question": "Can I integrate Fernwood with Slack?",
+      "reference_answer": "Not documented. No integrations are mentioned anywhere in the docs.",
+      "source_doc": null
+    },
+    {
+      "id": "gd-011",
+      "category": "hallucination_trap",
+      "question": "What is the rate limit on Fernwood's public API?",
+      "reference_answer": "Not documented. The docs never mention a public API at all, so any specific rate limit stated as fact is fabricated.",
+      "source_doc": null
+    },
+    {
+      "id": "gd-012",
+      "category": "hallucination_trap",
+      "question": "What is Fernwood's uptime SLA guarantee?",
+      "reference_answer": "Not documented. No uptime or SLA commitment appears anywhere in the docs, so any specific percentage stated as fact is fabricated.",
+      "source_doc": null
+    }
+  ]
+}

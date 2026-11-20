@@ -1,0 +1,55 @@
+name: AI Quality Evaluation
+
+on:
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch: {}
+
+jobs:
+  smoke-gate:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install and start Ollama
+        run: |
+          curl -fsSL https://ollama.ai/install.sh | sh
+          ollama serve &
+          sleep 5
+          ollama pull llama3.2:3b
+          ollama pull nomic-embed-text
+      - name: Install Python dependencies
+        run: pip install -r app/requirements.txt
+      - name: Run PR smoke gate
+        working-directory: app
+        run: python -m eval.ci_gate --dataset golden_dataset_smoke.json --baseline baseline.json --threshold 0.10
+
+  full-nightly-eval:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install and start Ollama
+        run: |
+          curl -fsSL https://ollama.ai/install.sh | sh
+          ollama serve &
+          sleep 5
+          ollama pull llama3.2:3b
+          ollama pull nomic-embed-text
+      - name: Install Python dependencies
+        run: pip install -r app/requirements.txt
+      - name: Run full evaluation and write report
+        working-directory: app
+        run: python -m eval.ci_gate --dataset golden_dataset.json --baseline baseline.json --threshold 0.10 --report reports/nightly.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: nightly-eval-report
+          path: app/reports/nightly.json
